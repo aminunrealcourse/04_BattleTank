@@ -20,17 +20,16 @@ public:
 
 	virtual void Tick(float DeltaTime) override;
 
+private:
 	ATank* GetControlledTank() const;
 	
 	void AimTowardCrosshair();
 
 	bool GetSightRayHitLocation(FVector& OutHitLocation) const;
 
-	FVector GetReachLineStart() const;
-
-	FVector GetReachLineEnd() const;
-
-private:
 	UPROPERTY(EditAnywhere)
-		float Reach = 10000.0f;
+		float CrosshairXLocation = 0.5f;
+	
+	UPROPERTY(EditAnywhere)
+		float CrosshairYLocation = 0.33333f;
 };
