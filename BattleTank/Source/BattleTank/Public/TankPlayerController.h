@@ -23,4 +23,14 @@ public:
 	ATank* GetControlledTank() const;
 	
 	void AimTowardCrosshair();
+
+	bool GetSightRayHitLocation(FVector& OutHitLocation) const;
+
+	FVector GetReachLineStart() const;
+
+	FVector GetReachLineEnd() const;
+
+private:
+	UPROPERTY(EditAnywhere)
+		float Reach = 10000.0f;
 };
