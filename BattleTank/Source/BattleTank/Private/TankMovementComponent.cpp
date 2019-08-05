@@ -1,8 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "TankTrack.h"
 #include "TankMovementComponent.h"
+#include "TankTrack.h"
+
 
 void UTankMovementComponent::Initialise(UTankTrack* LeftTrackToSet, UTankTrack* RightTrackToSet)
 {
@@ -13,8 +14,7 @@ void UTankMovementComponent::Initialise(UTankTrack* LeftTrackToSet, UTankTrack* 
 
 void UTankMovementComponent::IntendMoveForeward(float Throw)
 {
-	//float time = GetWorld()->GetTimeSeconds();
-	//UE_LOG(LogTemp, Warning, TEXT("Intend move foreward: %f"), Throw);
+	
 	if (!LeftTrack || !RightTrack) { return; }
 	LeftTrack->SetThrottle(Throw);
 	RightTrack->SetThrottle(Throw);
@@ -25,4 +25,11 @@ void UTankMovementComponent::IntendTurnRight(float Throw)
 	if (!LeftTrack || !RightTrack) { return; }
 	LeftTrack->SetThrottle(Throw);
 	RightTrack->SetThrottle(-Throw);
+}
+
+void UTankMovementComponent::RequestDirectMove(const FVector& MoveVelocity, bool bForceMaxSpeed)
+{
+	float time = GetWorld()->GetTimeSeconds();
+	FString TankName = GetOwner()->GetName();
+	UE_LOG(LogTemp, Warning, TEXT("%f, %s: Move Velocity: %s"), time, *TankName, *MoveVelocity.ToString());
 }
