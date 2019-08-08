@@ -23,6 +23,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Tank")
 		void Fire();
 
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = "Setup")
 		UTankAimingComponent* TankAimingComponent = nullptr;
@@ -33,9 +36,6 @@ protected:
 private:
 	// Sets default values for this pawn's properties
 	ATank();
-
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 		TSubclassOf<AProjectile> ProjectileBlueprint;
