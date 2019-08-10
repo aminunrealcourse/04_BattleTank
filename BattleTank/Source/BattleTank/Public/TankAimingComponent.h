@@ -50,6 +50,8 @@ private:
 
 	void MoveBarrelTowards(FVector AimDirection);
 
+	bool IsBarrelMoving();
+
 	UTankBarrel* Barrel = nullptr;
 
 	UTankTurret* Turret = nullptr;
@@ -62,6 +64,8 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 		float ReloadTimeInSeconds = 3.0f;
+
+	FVector AimDirection = FVector::ZeroVector;
 
 	double LastFireTime = 0;
 };
